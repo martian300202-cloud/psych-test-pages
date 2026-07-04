@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "entries": {
+    "/": {
+      "test_package": "生活状态诊断工具",
+      "source": "~/xiaohongshu-test/",
+      "skin": "default",
+      "deployed_at": "2026-07-03",
+      "note": "根路径直接部署，32题改版"
+    }
+  }
+}

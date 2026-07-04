@@ -1,0 +1,866 @@
+[
+  {
+    "id": 1,
+    "system": "work",
+    "text": "你对目前工作的整体满意度如何？",
+    "options": [
+      {
+        "label": "A",
+        "text": "非常满意，充满热情",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "比较满意，偶尔有不满",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "一般，说不上满意",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "很不满意，想尽快离开",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "system": "work",
+    "text": "完成一项重要任务后，你的感受是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "充满成就感，期待下一个挑战",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有些满足，但很快归于平淡",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "只是松了一口气",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "毫无感觉，只是完成了任务",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "system": "work",
+    "text": "你觉得目前的工作能体现你的价值吗？",
+    "options": [
+      {
+        "label": "A",
+        "text": "完全能，我觉得自己很有价值",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "大部分时候能",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很少能感受到",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有，感觉在做无意义的事",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "system": "work",
+    "text": "你的能力与当前岗位的匹配程度如何？",
+    "options": [
+      {
+        "label": "A",
+        "text": "非常匹配，能发挥所长",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "基本匹配，有些地方需要提升",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "不太匹配，感觉力不从心",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全不匹配，做着自己不擅长的事",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "system": "work",
+    "text": "你对目前的收入是否感到认同？",
+    "options": [
+      {
+        "label": "A",
+        "text": "非常满意，觉得付出得到了回报",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "基本满意，偶尔觉得不够",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "不太满意，觉得付出与回报不匹配",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "很不满意，觉得被严重低估",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "system": "work",
+    "text": "想到明天要上班，你的第一反应是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "期待，有想做的事情",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "平静，没什么特别感觉",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "有些抗拒，不想去",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "非常抗拒，想到就焦虑",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "system": "work",
+    "text": "你觉得自己在工作中还有成长空间吗？",
+    "options": [
+      {
+        "label": "A",
+        "text": "很多，每天都在学习新东西",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有一些，但不如从前",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很少，感觉在重复",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有，已经停滞很久了",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "system": "work",
+    "text": "如果有人问\"你是做什么的\"，你的内心感受是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "自豪，愿意详细介绍",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "平静，如实回答",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "有些尴尬，不想多说",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "内心抗拒，觉得那不是真正的我",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "system": "energy",
+    "text": "你最近的睡眠质量如何？",
+    "options": [
+      {
+        "label": "A",
+        "text": "很好，每天精力充沛",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "还可以，偶尔睡不好",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常失眠或睡不踏实",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "长期睡眠不足，总是很累",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "system": "energy",
+    "text": "你最近的情绪状态如何？",
+    "options": [
+      {
+        "label": "A",
+        "text": "积极乐观，情绪稳定",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "大部分时候还好，偶尔低落",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常烦躁或焦虑",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "情绪麻木，对什么都提不起兴趣",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "system": "energy",
+    "text": "周末或休息后，你的状态恢复得如何？",
+    "options": [
+      {
+        "label": "A",
+        "text": "完全恢复，充满活力",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "基本恢复，但不如从前",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "休息后还是很累",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "越休息越空虚，完全恢复不了",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "system": "energy",
+    "text": "你最近承受的压力水平如何？",
+    "options": [
+      {
+        "label": "A",
+        "text": "压力适中，能很好应对",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有些压力，但还能承受",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "压力很大，经常感到不堪重负",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "压力极大，快要崩溃了",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "system": "energy",
+    "text": "下班后，你还有精力做自己的事情吗？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有很多精力，可以做喜欢的事",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有一些精力，但不多",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "几乎没有精力，只想躺着",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "连想都不想动，连快乐都觉得麻烦",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "system": "energy",
+    "text": "你最近是否经常出现拖延或注意力不集中的情况？",
+    "options": [
+      {
+        "label": "A",
+        "text": "很少，专注力很好",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔会，但能调整",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常拖延，很难集中注意力",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "几乎每天都在拖延，感觉大脑在省电模式",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "system": "energy",
+    "text": "你最近对社交活动的态度是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "主动参与，享受社交",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "不排斥，但也不太主动",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "能推就推，不想见人",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全不想出门，连说话都觉得累",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "system": "energy",
+    "text": "你最近是否经常想请假或消失几天？",
+    "options": [
+      {
+        "label": "A",
+        "text": "没有，我享受工作",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔会想休息一下",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常想请假，不想上班",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "每天都在想逃离，想重新开始",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "system": "growth",
+    "text": "你最近是否有强烈的学习新技能的欲望？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有，正在学习新东西",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有一些想法，但还没开始",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "没什么兴趣，觉得学了也没用",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有，对什么都提不起兴趣",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "system": "growth",
+    "text": "你对探索新领域或新方向的态度是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "非常积极，经常尝试新事物",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有兴趣，但缺乏行动力",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "不太感兴趣，觉得现在挺好",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全不想探索，觉得没意义",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "system": "growth",
+    "text": "你最近是否有持续学习的习惯？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有，每天都会学习",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔学习，不够规律",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很久没学习了",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有学习动力",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "system": "growth",
+    "text": "你对未来3-5年的期待是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "充满期待，有明确目标",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有些期待，但方向不太清晰",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "没什么期待，走一步看一步",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "对未来感到迷茫甚至恐惧",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "system": "growth",
+    "text": "你觉得自己是否在实现自我价值？",
+    "options": [
+      {
+        "label": "A",
+        "text": "是的，正在实现",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "部分实现，还有差距",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "离自我实现还很远",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全不知道自己的价值在哪",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "system": "growth",
+    "text": "你最近是否经常感到\"人生不该只有这样\"？",
+    "options": [
+      {
+        "label": "A",
+        "text": "没有，我对现状很满意",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔会想，但很快放下",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常这样想，但不知道怎么办",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "每天都在想，觉得被困住了",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "system": "growth",
+    "text": "你最近是否对新鲜事物感到好奇？",
+    "options": [
+      {
+        "label": "A",
+        "text": "非常好奇，什么都想了解",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有些好奇，但不如从前",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很少好奇，觉得都差不多",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全不好奇，对什么都无感",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "system": "growth",
+    "text": "你最近是否想过换赛道或重新开始？",
+    "options": [
+      {
+        "label": "A",
+        "text": "没有，我对现在的方向很坚定",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔想过，但没认真考虑",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常想，但不知道从哪开始",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "每天都在想，觉得必须改变",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "system": "life",
+    "text": "工作在你生活中的占比大约是多少？",
+    "options": [
+      {
+        "label": "A",
+        "text": "适中，工作只是生活的一部分",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偏多，但还能兼顾其他",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很多，几乎没有个人时间",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "几乎全部，生活只剩工作",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "system": "life",
+    "text": "你最近是否有规律的社交活动？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有，经常和朋友聚会",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔有，但不如从前",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很少，几乎不社交",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有，也不想社交",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "system": "life",
+    "text": "你是否有持续投入的兴趣爱好？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有，每周都会投入时间",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有一些兴趣，但投入不多",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "曾经有，但很久没做了",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有兴趣爱好",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "system": "life",
+    "text": "你每周有多少独处放松的时间？",
+    "options": [
+      {
+        "label": "A",
+        "text": "很多，每天都有独处时间",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "有一些，但不够",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很少，几乎没有自己的时间",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有，一直在忙",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "system": "life",
+    "text": "你最近对健康管理的投入如何？",
+    "options": [
+      {
+        "label": "A",
+        "text": "很重视，有规律的运动和饮食",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔注意，但不够规律",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很少关注，身体状态一般",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全忽视，身体已经出问题",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "system": "life",
+    "text": "你最近是否经常羡慕别人的生活？",
+    "options": [
+      {
+        "label": "A",
+        "text": "没有，我对自己的生活很满意",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔羡慕，但也能接受自己",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常羡慕，觉得别人活得更好",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "几乎每天都在羡慕，觉得自己活得很差",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "system": "life",
+    "text": "你最近是否经常幻想\"重新开始\"？",
+    "options": [
+      {
+        "label": "A",
+        "text": "没有，我珍惜现在",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "偶尔会想，但只是想想",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "经常想，想换一种活法",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "每天都在想，觉得现在的人生不是我要的",
+        "score": 4
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "system": "life",
+    "text": "你觉得现在的生活有\"活着的感觉\"吗？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有，每天都很充实",
+        "score": 1
+      },
+      {
+        "label": "B",
+        "text": "大部分时候有，偶尔觉得空虚",
+        "score": 2
+      },
+      {
+        "label": "C",
+        "text": "很少，感觉在完成任务",
+        "score": 3
+      },
+      {
+        "label": "D",
+        "text": "完全没有，只是活着而已",
+        "score": 4
+      }
+    ]
+  }
+]
