@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>原版 vs 改写 — 全文对比</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,PingFang SC,Microsoft YaHei,sans-serif;background:#f5f5f5;color:#1a1a1a}
+.header{background:#fff;padding:20px 32px;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}
+.header h1{font-size:18px;font-weight:700}
+.header .sub{font-size:12px;color:#888;margin-top:4px}
+.tabs{display:flex;gap:0;margin-top:16px}
+.tab{padding:8px 20px;border:none;background:none;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:#888}
+.tab.active{border-bottom-color:#2563eb;color:#2563eb;font-weight:600}
+.container{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1400px;margin:0 auto}
+.panel{background:#fff;padding:24px 32px;min-height:100vh}
+.panel.left{border-right:1px solid #eee}
+.panel h2{font-size:15px;font-weight:700;margin-bottom:8px}
+.panel .meta{font-size:11px;color:#888;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #f0f0f0}
+.section{margin-bottom:24px}
+.section-title{font-size:12px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;padding:4px 8px;background:#f8f8f8;border-radius:4px;display:inline-block}
+.field{margin-bottom:12px}
+.field-label{font-size:11px;color:#999;margin-bottom:2px}
+.field-value{font-size:14px;line-height:1.7}
+.field-value.highlight{font-size:16px;font-weight:600;color:#1a1a1a}
+.field-value.subtitle{font-size:15px;color:#444;font-style:italic}
+.analysis-item{margin-bottom:8px;padding-left:12px;border-left:2px solid #e0e0e0;font-size:13px;line-height:1.6}
+.analysis-item.original{border-left-color:#f59e0b}
+.analysis-item.ours{border-left-color:#2563eb}
+ul{list-style:none;padding:0}
+ul li{font-size:13px;line-height:1.6;padding:2px 0}
+ul li:before{content:"• ";color:#999}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;background:#f0f0f0;border-radius:12px;margin:2px 4px 2px 0}
+.diff-highlight{background:#fef3c7;padding:1px 0}
+.loading{text-align:center;padding:60px;color:#888;font-size:14px}
+.match-type{font-size:11px;color:#2563eb;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>心理测试 — 原版 vs 改写 全文对照</h1>
+  <div class="sub">左：appmiaoda 原版 &nbsp;|&nbsp; 右：我们的改写版本</div>
+  <div class="tabs" id="tabs"></div>
+</div>
+<div class="container">
+  <div class="panel left" id="leftPanel"><div class="loading">加载中...</div></div>
+  <div class="panel right" id="rightPanel"><div class="loading">加载中...</div></div>
+</div>
+
+<script>
+// ===== 数据 =====
+const TYPE_KEYS = ['career_mismatch','energy_depleted','relationship_drain','growth_stagnant','life_imbalance'];
+const TYPE_NAMES = {career_mismatch:'职业错位→方向待定',energy_depleted:'能量耗尽→电量告急',relationship_drain:'关系消耗→社交过载',growth_stagnant:'成长停滞→困在原地',life_imbalance:'活法失衡→失衡奔跑'};
+
+const OUR_DATA = {
+  career_mismatch: {
+    title: '方向待定者',
+    subtitle: '你真正想换的，不是工作。是方向。',
+    coreConclusion: '你不是不够努力。你是努力的方向，越来越偏离自己真正想去的地方。',
+    summary: '你有一种隐隐的感觉：我会做，但我越来越不想做了。',
+    deepAnalysis: ['很多方向待定者，最开始都不是因为讨厌这份工作进来的。甚至刚开始还挺喜欢。','但随着时间推移，出现了一种微妙的变化：你会做了，做好了，但你并没有因此变得开心。','能力和热爱是两套系统。你现在的困境不是能力不够，而是热爱在慢慢消失。','于是出现：上班越来越机械、完成任务没有成就感、周一越来越难熬。','这时候很多人会误判——以为是自己在偷懒，给自己贴"不努力"的标签。','其实问题不是懒。是你正在做的事，和你想成为的人，之间的裂缝越来越大了。'],
+    consumptionSources: [{title:'价值感流失',description:'你每天都在做事，但这些事不再让你觉得自己有价值。这种感觉很可怕——比累更可怕的是：做着做着，不知道自己在做什么了。'},{title:'未来感缺失',description:'不是因为现在不好而难受，而是因为看不到未来而焦虑。你不知道3年后的自己在哪里，这种不确定性每天都在消耗你。'},{title:'自我认同冲突',description:'你心里有个声音说"这不是真正的我"，但现实又在说"先做着吧"。两个声音不断拉扯，最能耗能的就是这种内耗。'}],
+    advantages: ['学东西快，能力底子不错','有自我觉察的意识，不是麻木的人','对自己有要求，不想浑浑噩噩','有勇气承认"现在不对"'],
+    blindSpots: [{title:'把迷茫当失败',description:'不知道方向≠没有方向。你现在只是在"找"，不是"迷路"。'},{title:'觉得自己不够努力',description:'你已经很努力了。问题是：你把努力放在了一个你自己都不确定的地方。'},{title:'总想一步到位',description:'总想找到一个完美的方向再出发。但方向不是想出来的，是试出来的。'}],
+    riskWarning: [{label:'情绪状态',text:'越来越容易烦躁，越来越容易失去耐心。'},{label:'成长状态',text:'停滞感增强，觉得每天都在原地踏步。'},{label:'人生状态',text:'开始频繁羡慕别人。常出现的想法：我是不是选错路了？'}],
+    futureNoChange: ['热情继续下降','工作进入自动驾驶模式','成长感持续流失','开始怀疑人生方向'],
+    futureWithChange: ['重新探索兴趣','发现新的职业可能','恢复成长反馈','人生掌控感提升'],
+    actionPlan: [{week:'第1周',title:'记录',description:'每天记下：今天哪件事最有成就感？哪件事最让我疲惫？'},{week:'第2周',title:'回溯',description:'写下过去三年里，你最喜欢的工作瞬间是什么样子的。'},{week:'第3周',title:'探索',description:'找三个感兴趣的方向了解一下——只是了解，不用投简历。'},{week:'第4周',title:'验证',description:'找个真实从业者聊聊，看看想象和现实的差距。'}],
+    hiddenAdvantage: '你的成长欲望其实很强',
+    shouldNotDo: '冲动辞职',
+    keywords: ['成长断层','价值感下降','职业错位','未来感缺失','方向重建'],
+  },
+  energy_depleted: {
+    title: '电量告急者',
+    subtitle: '你真正缺的不是辞职。是恢复。',
+    coreConclusion: '你最近最想离开的，未必是工作。而是：那个长期处于透支状态的自己。',
+    summary: '你不是讨厌工作。你是太累了。',
+    deepAnalysis: ['很多电量告急了人都会误以为："我一定是讨厌这份工作了。"','但如果给你连续休息30天，如果睡眠恢复正常，如果压力降下来，你可能会发现：自己没有那么讨厌现在的工作。','电量告急最大的特点：把所有问题都归因于工作。工作好烦、上班好累、领导好烦——','但仔细看看，连下班后的生活也开始失去吸引力。以前喜欢的事现在懒得做，以前想见的人现在不想见。','问题已经不只是工作了。是整个能量系统在报警。'],
+    consumptionSources: [{title:'持续输出没有回血',description:'过去很长一段时间，你都在：解决问题、承担责任、回应需求。但你很少有机会真正恢复自己。大脑开始进入省电模式——拖延、麻木、注意力下降。不是懒，是电池快没电了。'},{title:'情绪库存见底',description:'表面看起来正常，甚至还能工作。但情绪库存已经很低了：一点小事就烦、一点问题就累、一点变化就焦虑。已经没有多余的缓冲区了。'},{title:'恢复能力下降',description:'最危险的信号：休息也恢复不了。以前睡一觉就好了，现在睡两天还是累。以前周末能恢复，现在周末结束更空虚。恢复系统正在失效。'}],
+    advantages: ['责任感很强，习惯扛事','执行力不错，能完成高密度任务','共情能力强，习惯照顾别人','对自己有要求，想做到更好'],
+    blindSpots: [{title:'把疲惫当成了不喜欢',description:'你不是讨厌工作。你只是太累了。累的时候，任何事情都会失去吸引力。'},{title:'把休息当成奖励',description:'总觉得"忙完这一阵再休息"。但你永远忙不完。恢复不应该是奖励，是必需品。'},{title:'总觉得自己还能撑',description:'电量告急的人最擅长的一件事：硬撑。这也是最危险的一件事。'}],
+    riskWarning: [{label:'情绪状态',text:'情绪波动增加，越来越容易烦躁。'},{label:'身体状态',text:'睡眠质量下降，精力持续不足。'},{label:'工作状态',text:'工作效率下降，注意力难以集中。'},{label:'心理状态',text:'兴趣感持续消失——觉得改变也没用'}],
+    futureNoChange: ['疲惫持续增加','动力不断下降','恢复能力越来越差','开始怀疑人生','离职冲动越来越强'],
+    futureWithChange: ['睡眠改善','情绪稳定','兴趣恢复','动力回升','重新看清方向'],
+    actionPlan: [{week:'第1周',title:'停止漏电',description:'减少无效社交、减少情绪劳动、减少不必要的加班。先把漏电口堵住。'},{week:'第2周',title:'恢复身体',description:'规律睡眠、固定起床时间、每天散步。先把基础电量养回来。'},{week:'第3周',title:'找回快乐',description:'做一件不赚钱、不成长、纯喜欢的事情。找回活着的感觉。'},{week:'第4周',title:'连接内心',description:'问自己：如果没有任何现实压力，我最想把时间花在哪里？'}],
+    hiddenAdvantage: '责任感极强',
+    shouldNotDo: '继续硬撑',
+    keywords: ['长期透支','低电量模式','恢复能力下降','情绪库存不足','兴趣感消失'],
+  },
+  relationship_drain: {
+    title: '社交过载者',
+    subtitle: '你不是讨厌工作。你是长期处在高消耗的人际环境里。',
+    coreConclusion: '你最近最想离开的，可能不是工作。而是某些每天都在消耗你的人。',
+    summary: '你不是讨厌工作本身。你是被"人"拖垮了。',
+    deepAnalysis: ['很多社交过载者最后会把所有疲惫归因于工作——公司不行、行业不行、工作不行。','但如果换掉工作内容，问题可能还在。因为真正耗尽你的，不是事，是人。','你的特点是：工作内容其实能接受，能力其实没问题，收入也不一定差。但每天醒来想到要上班，还是觉得压抑。','原因通常不是事情本身，而是某个人、某种氛围、某种沟通模式。','工作本身变成了被关系绑架的场景。越想越累。'],
+    consumptionSources: [{title:'情绪劳动过载',description:'你每天都在做一件事：管理别人的情绪。领导情绪不好你要接，客户情绪不好你要接，同事情绪不好你也要接。久而久之，你的能量都在回应别人。'},{title:'长期压抑表达',description:'你习惯忍。很多话不说、很多委屈算了、很多不满吞下去。表面没事，实际上情绪债越欠越多。看到消息就烦、听到名字就累。'},{title:'被动适应环境',description:'你习惯了配合、让步、理解别人。但时间久了会出现一种感觉：好像所有人都在做自己，只有我不行。这就是最隐蔽的内耗。'}],
+    advantages: ['共情力强，能理解他人感受','责任感高，认真对待每段关系','配合度高，团队意识强','情绪敏感度高，善于察言观色'],
+    blindSpots: [{title:'把忍耐当成成熟',description:'很多时候你觉得"算了，别计较"。那不是成熟，是压抑。'},{title:'总想理解所有人',description:'理解别人100分，理解自己0分——这才是问题的根源。'},{title:'把环境问题归咎自己',description:'你总觉得"是不是我太敏感了"、"是不是我要求太高了"。但有时候，只是环境不适合你。'}],
+    riskWarning: [{label:'表达状态',text:'表达欲下降，越来越不想说话了。'},{label:'社交状态',text:'社交回避增强，不想参加任何聚会。'},{label:'工作状态',text:'工作满意度持续下降，离职冲动上升。'}],
+    futureNoChange: ['继续压抑','继续配合','继续消耗','越来越想逃离','开始怀疑自己'],
+    futureWithChange: ['建立边界','减少情绪劳动','提升表达能力','恢复掌控感','重新评估环境'],
+    actionPlan: [{week:'第1周',title:'看清消耗源',description:'记录每天最耗能的人是谁。先知道敌人在哪。'},{week:'第2周',title:'建个小边界',description:'从延迟回复开始。拒绝一个额外责任。减少一次情绪劳动。'},{week:'第3周',title:'练习表达',description:'从一个短句开始："这个我需要想想。"不用解释太多。'},{week:'第4周',title:'重新评估',description:'认真判断：问题是这个人/这个环境，还是我自己的边界没设好。'}],
+    hiddenAdvantage: '共情能力强',
+    shouldNotDo: '继续讨好',
+    keywords: ['关系消耗','情绪劳动','边界缺失','冲突回避','环境倦怠','表达压抑'],
+  },
+  growth_stagnant: {
+    title: '困在原地者',
+    subtitle: '你不是讨厌现在。你只是已经很久没有向前走了。',
+    coreConclusion: '你想逃离的不是工作、不是环境。而是那个越来越看不到变化的自己。',
+    summary: '生活没有明显问题，但也没有惊喜。这就是你最难过的地方。',
+    deepAnalysis: ['困在原地者有一个典型的状态：生活没有明显的问题，但也没有惊喜。工作没有明显的问题，但也没有突破。人生没有明显的问题，但也没有期待。','于是出现一种感觉：日子在过，但没有在活着。一天天重复，一年年过去，偶尔在深夜突然惊醒——我的人生就这样了吗？','你不是懒。你只是太久没有体验过"成长"带来的兴奋感了。','人是需要反馈的动物。当学习没有反馈、努力没有回应、改变没有结果，动力就会慢慢泄掉。','你现在最需要的不是"换个工作"，而是"重新找回向前走的感觉"。'],
+    consumptionSources: [{title:'成长反馈缺失',description:'你很久没有体验过"学会了某件事"的快乐了。每天都在输出，没有输入。大脑断粮了。'},{title:'探索欲被压制',description:'不是没有好奇心，是好奇心被现实磨没了。每天都在应付当下，没空去想"如果"。'},{title:'自我价值模糊',description:'不知道自己想要什么，也不知道自己能成为什么。这种模糊感本身就很耗能。'}],
+    advantages: ['内心有追求，不是随波逐流的人','有自我觉察，意识到停滞本身就是改变的开始','虽然迷茫，但没有放弃寻找','想象力还在，"如果"还会出现在脑海里'],
+    blindSpots: [{title:'把停滞当成了真相',description:'觉得"我就这样了"。但现在的你不是全部的你。'},{title:'总觉得要准备好了再动',description:'你一直在等"那个对的时刻"。但对的时刻是动起来之后才会出现的。'},{title:'过度理想化未来',description:'总觉得找到那个方向就好了。但人生不是找到的，是试出来的。'}],
+    riskWarning: [{label:'目标状态',text:'目标感下降，不知道自己想要什么。'},{label:'行动状态',text:'行动力下降，越来越拖延。'},{label:'兴趣状态',text:'兴趣感下降，对什么都提不起劲。'},{label:'人生状态',text:'人生停滞感增强——活着，但没有热情。'}],
+    futureNoChange: ['重复工作','重复生活','重复思维','成长停滞','人生倦怠'],
+    futureWithChange: ['恢复探索','增加新体验','重新学习','找到新方向','恢复成长感'],
+    actionPlan: [{week:'第1周',title:'找到消失的兴奋感',description:'记录最近三年最快乐的时刻。找出那些让你兴奋的东西去了哪里。'},{week:'第2周',title:'重启学习',description:'选一个全新领域。不求变现，只求好奇。重新体验"学会"的感觉。'},{week:'第3周',title:'制造陌生感',description:'去一个没去过的地方、参加一个没参加过的活动、认识一个圈子外的人。'},{week:'第4周',title:'建第二条线',description:'开始培养工作之外的成长系统。不一定是副业，但一定是一条新的路。'}],
+    hiddenAdvantage: '探索欲其实很强',
+    shouldNotDo: '继续等待',
+    keywords: ['成长停滞','未来感下降','探索欲减弱','人生倦怠','第二成长曲线','慢性空心化'],
+  },
+  life_imbalance: {
+    title: '失衡奔跑者',
+    subtitle: '你真正想换的，不是工作。是你现在运行人生的方式。',
+    coreConclusion: '你被一种失衡的人生结构困住了——某个部分太重，其他部分几乎消失。',
+    summary: '你不是被工作困住了。你是被一种不平衡的生活困住了。',
+    deepAnalysis: ['失衡奔跑者通常有一个特点：人生里某个部分特别重，其他部分几乎消失。','比如：工作占了90%，生活只有10%。或者照顾别人占了80%，自己只有20%。','短期内这似乎没问题，甚至还能带来成就感——你觉得自己很高效、很重要。','但时间长了，你会感觉到一种"平板式"的人生：在一个维度上拼命跑，但其他维度已经荒废了。','人不是单线程的动物。当生活只剩下一个支点，一旦那个支点出问题，整个人生都会晃动。'],
+    consumptionSources: [{title:'单点支撑',description:'你把所有的精力、时间、价值感都压在一个点上。这个点一旦不稳，整个人就站不住了。'},{title:'自我被压缩',description:'工作之外的那个你，已经很久没出现了。你喜欢什么、想做什么、是谁——这些问题越来越难回答。'},{title:'失去弹性',description:'你的生活没有缓冲带。一点小意外就能打乱全部节奏，因为你没有别的支点可以依靠。'}],
+    advantages: ['专注力强，能在一件事上深耕','抗压能力不错，能扛高负荷','执行力强，不轻易放弃','对责任认真，不会敷衍'],
+    blindSpots: [{title:'把"忙"当成了"充实"',description:'忙不等于充实。一个人可以很忙，但很空。'},{title:'觉得自己还能再撑一阵',description:'失衡的问题是：它不会突然崩塌，而是慢慢蚕食。等你意识到的时候，已经很累了。'},{title:'把休息当奢侈',description:'你总觉得"等忙完这阵就好了"。但如果你不给生活留白，生活会用另一种方式让你停下来。'}],
+    riskWarning: [{label:'身体状态',text:'长期高负荷运转，身体开始发出信号。'},{label:'社交状态',text:'社交圈越来越窄，除了工作没有其他关系。'},{label:'兴趣状态',text:'除了工作，不知道自己喜欢什么。'},{label:'心理状态',text:'失衡加剧，容易产生"这一切为了什么"的疑问。'}],
+    futureNoChange: ['工作占比越来越大','个人空间越来越小','身体开始出问题','自我越来越模糊','突然有一天崩掉'],
+    futureWithChange: ['建立生活支点','找到工作之外的价值','恢复弹性空间','重新获得掌控感'],
+    actionPlan: [{week:'第1周',title:'盘点时间账',description:'真实记录一周时间分配。看看工作和生活的比例到底是多少。'},{week:'第2周',title:'找回一个小爱好',description:'想想以前喜欢但很久没做的事。花30分钟重新做一次。'},{week:'第3周',title:'建立社交支点',description:'约一个非工作的朋友吃饭。不聊工作，只聊生活。'},{week:'第4周',title:'重新分配',description:'试着把时间的10%从工作挪到生活。感受一下这个变化。'}],
+    hiddenAdvantage: '专注力很强',
+    shouldNotDo: '继续单向冲刺',
+    keywords: ['生活失衡','单点支撑','自我压缩','失去弹性','人生结构重建'],
+  }
+};
+
+let ORIGINAL_DATA = null;
+let currentType = 'career_mismatch';
+
+// ===== 加载原始数据 =====
+fetch('appmiaoda_original.json')
+  .then(r => r.json())
+  .then(d => {
+    ORIGINAL_DATA = d;
+    init();
+  })
+  .catch(e => {
+    document.getElementById('leftPanel').innerHTML = '<div class="loading" style="color:red">加载失败: ' + e.message + '</div>';
+  });
+
+function init() {
+  // Tabs
+  var tabsHTML = '';
+  TYPE_KEYS.forEach(function(k) {
+    tabsHTML += '<button class="tab' + (k===currentType?' active':'') + '" onclick="switchType(\'' + k + '\')">' + TYPE_NAMES[k] + '</button>';
+  });
+  document.getElementById('tabs').innerHTML = tabsHTML;
+  switchType(currentType);
+}
+
+function switchType(key) {
+  currentType = key;
+  document.querySelectorAll('.tab').forEach(function(t) { t.className = 'tab'; });
+  event.target.className = 'tab active';
+  if (!ORIGINAL_DATA) return;
+  renderPanel('leftPanel', ORIGINAL_DATA[key], 'original');
+  renderPanel('rightPanel', OUR_DATA[key], 'ours');
+}
+
+function renderPanel(id, data, side) {
+  var isOrig = side === 'original';
+  var html = '';
+
+  // Title + subtitle
+  html += '<h2>' + (isOrig ? '🔶 ' : '🔷 ') + data.title + '</h2>';
+  html += '<div class="meta">' + (isOrig ? 'appmiaoda 原版' : '我们的改写') + '</div>';
+
+  // Match type
+  html += '<div class="match-type">' + data.subtitle + '</div>';
+
+  // Core conclusion
+  html += '<div class="section"><div class="section-title">核心结论</div>';
+  html += '<div class="field-value highlight">' + data.coreConclusion + '</div></div>';
+
+  // Summary
+  html += '<div class="section"><div class="section-title">一句话</div>';
+  html += '<div class="field-value subtitle">' + data.summary + '</div></div>';
+
+  // Deep analysis
+  html += '<div class="section"><div class="section-title">深度分析</div>';
+  (data.deepAnalysis||[]).forEach(function(a) {
+    html += '<div class="analysis-item ' + side + '">' + a + '</div>';
+  });
+  html += '</div>';
+
+  // Consumption
+  html += '<div class="section"><div class="section-title">消耗来源</div>';
+  (data.consumptionSources||[]).forEach(function(s) {
+    html += '<div class="field"><div class="field-label"><strong>' + s.title + '</strong></div>';
+    html += '<div class="field-value">' + s.description + '</div></div>';
+  });
+  html += '</div>';
+
+  // Advantages
+  html += '<div class="section"><div class="section-title">优势</div><ul>';
+  (data.advantages||[]).forEach(function(a) { html += '<li>' + a + '</li>'; });
+  html += '</ul></div>';
+
+  // Blind spots
+  html += '<div class="section"><div class="section-title">盲区</div>';
+  (data.blindSpots||[]).forEach(function(b) {
+    html += '<div class="field"><div class="field-label"><strong>' + b.title + '</strong></div>';
+    html += '<div class="field-value">' + b.description + '</div></div>';
+  });
+  html += '</div>';
+
+  // Risk
+  html += '<div class="section"><div class="section-title">风险预警</div>';
+  (data.riskWarning||[]).forEach(function(r) {
+    html += '<div class="field"><span style="color:#888;font-size:11px">' + r.label + ': </span>';
+    html += '<span style="font-size:13px">' + r.text + '</span></div>';
+  });
+  html += '</div>';
+
+  // Future
+  html += '<div class="section"><div class="section-title">不改变 vs 改变</div>';
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">';
+  html += '<div><div style="font-size:11px;color:#dc2626;margin-bottom:4px">不改变</div><ul>';
+  (data.futureNoChange||[]).forEach(function(f) { html += '<li>' + f + '</li>'; });
+  html += '</ul></div>';
+  html += '<div><div style="font-size:11px;color:#16a34a;margin-bottom:4px">改变</div><ul>';
+  (data.futureWithChange||[]).forEach(function(f) { html += '<li>' + f + '</li>'; });
+  html += '</ul></div></div></div>';
+
+  // Action plan
+  html += '<div class="section"><div class="section-title">4周行动</div>';
+  (data.actionPlan||[]).forEach(function(a) {
+    html += '<div class="field"><strong>' + a.week + ' ' + a.title + '</strong>: ' + a.description + '</div>';
+  });
+  html += '</div>';
+
+  // Bottom
+  html += '<div class="section"><div class="section-title">额外</div>';
+  html += '<div class="field"><span class="field-label">隐藏优势: </span>' + data.hiddenAdvantage + '</div>';
+  html += '<div class="field"><span class="field-label">不该做: </span><span style="color:#dc2626">' + data.shouldNotDo + '</span></div>';
+  html += '<div>';
+  (data.keywords||[]).forEach(function(k) { html += '<span class="tag">' + k + '</span>'; });
+  html += '</div></div>';
+
+  document.getElementById(id).innerHTML = html;
+}
+</script>
+</body>
+</html>
